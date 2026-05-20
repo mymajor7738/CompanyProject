@@ -1,0 +1,55 @@
+SELECT * FROM gjun.orders;
+
+/*select
+gjun.orders.order_no,
+gjun.customers.name,
+gjun.customers.address
+from
+gjun.orders join gjun.customers
+where gjun.orders.customer_no=gjun.customers.customer_no;*/
+
+select
+gjun.orders.order_no,
+gjun.customers.name,
+gjun.customers.address
+from
+gjun.orders inner join gjun.customers
+on gjun.orders.customer_no=gjun.customers.customer_no;
+
+select
+gjun.orders.order_no,
+gjun.customers.name,
+gjun.customers.address
+from
+gjun.orders right join gjun.customers
+on gjun.orders.customer_no=gjun.customers.customer_no;
+
+select
+gjun.orders.order_no,
+gjun.customers.name,
+gjun.customers.address
+from
+gjun.customers left join gjun.orders
+on gjun.orders.customer_no=gjun.customers.customer_no;
+
+select 
+gjun.orders.order_no as 訂單編號,
+gjun.product.name as 產品名稱,
+gjun.orders.amount as 數量,
+gjun.orders.amount*gjun.product.price as 成交金額
+from
+gjun.product inner join gjun.orders
+on gjun.orders.product_no=gjun.product.product_no;
+
+select
+gjun.orders.order_no as 訂單編號,
+gjun.customers.name as 客戶名稱,
+gjun.employee.name as 員工名稱,
+gjun.product.name as 產品名稱,
+gjun.orders.amount as 數量,
+gjun.orders.amount*gjun.product.price as 交易金額
+from gjun.orders
+inner join gjun.customers on gjun.orders.customer_no=gjun.customers.customer_no
+inner join gjun.employee on gjun.orders.employee_no=gjun.employee.employee_no
+inner join gjun.product on gjun.orders.product_no=gjun.product.product_no;
+
